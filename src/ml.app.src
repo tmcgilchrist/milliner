@@ -1,0 +1,14 @@
+{application, ml,
+ [
+  {description, "ML, ML language in Erlang"},
+  {vsn, "1"},
+  {modules, [
+             ml
+            ]},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {env, []}
+ ]}.
