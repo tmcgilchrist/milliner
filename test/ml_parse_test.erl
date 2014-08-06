@@ -7,18 +7,26 @@ function_definition_test() ->
     {ok, AST} = ml_parse:parse(Tokens),
     ?assertEqual(AST,
                  {{let_t,1,"let"},
-                  {space,1," "},
                   {chr,1,"two"},
                   {unit},
+                  {equals,1,"="},
                   {number,1,2}}).
 
-function_definition_args_test() ->
+function_definition_string_test() ->
     {ok, Tokens, _} = ml_scan:string("let two() = 'string';"),
-    io:format("Tokens: ~p~n", [Tokens]),
     {ok, AST} = ml_parse:parse(Tokens),
     ?assertEqual(AST,
                  {{let_t,1,"let"},
-                  {space,1," "},
                   {chr,1,"two"},
                   {unit},
+                  {equals,1,"="},
                   {string, "string"}}).
+
+function_definition_args_test() ->
+    {ok, Tokens, _} = ml_scan:string("let two x = x;"),
+    {ok, AST} = ml_parse:parse(Tokens),
+    ?assertEqual(AST,{{let_t,1,"let"},
+                      {chr,1,"two"},
+                      {arguments,{chr,1,"x"}},
+                      {equals,1,"="},
+                      {chr,1,"x"}}).

@@ -13,18 +13,18 @@ Terminals
   equals
   quote
   plus multi
-  semicolon
-  space.
+  semicolon.
 
 Rootsymbol
   expressions.
 
 expressions -> let_expr: '$1'.
 
-let_expr -> let_t space chr args space equals space statement semicolon : {'$1', '$2', '$3', '$4', '$8'}.
+let_expr -> let_t chr args equals statement semicolon : {'$1', '$2', '$3', '$4', '$5'}.
 
 statement -> number: '$1'.
 statement -> string: '$1'.
+statement -> chr:    '$1'.
 
 args -> unit: '$1'.
 args -> chr : {arguments, '$1'}.
