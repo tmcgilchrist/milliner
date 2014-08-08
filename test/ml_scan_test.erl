@@ -23,6 +23,24 @@ function_definition_2_test() ->
                           {number,1,2},
                           {semicolon,1,";"}]).
 
+function_call_test() ->
+    {ok, Tokens, _} = ml_scan:string("foo();"),
+    ?assertEqual(Tokens, [{chr,1,"foo"},
+                          {lparen,1,"("},
+                          {rparen,1,")"},
+                          {semicolon,1,";"}
+                         ]).
+
+function_call_args_test() ->
+    {ok, Tokens, _} = ml_scan:string("foo(1 2 3);"),
+    ?assertEqual(Tokens, [{chr,1,"foo"},
+                          {lparen,1,"("},
+                          {number,1,1},
+                          {pnumber,1,2},
+                          {number,1,3},
+                          {rparen,1,")"},
+                          {semicolon,1,";"}
+                         ]).
 
 let_definition_test() ->
     {ok, Tokens, _} = ml_scan:string("let x = 1;"),
