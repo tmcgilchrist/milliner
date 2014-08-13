@@ -36,7 +36,7 @@ function_call_args_test() ->
     ?assertEqual(Tokens, [{chr,1,"foo"},
                           {lparen,1,"("},
                           {number,1,1},
-                          {pnumber,1,2},
+                          {number,1,2},
                           {number,1,3},
                           {rparen,1,")"},
                           {semicolon,1,";"}
