@@ -1,4 +1,4 @@
-### Small ML for BEAM
+### Small ML for BEAM [![Build Status](https://travis-ci.org/tmcgilchrist/milliner.svg?branch=master)](https://travis-ci.org/tmcgilchrist/milliner)
 
 Small ML like language for the Erlang BEAM VM.
 
